@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafik ISPU</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Grafik ISPU</h1>
+    <form method="GET" action="/graph">
+        <select name="interval">
+            <option value="Harian">Harian</option>
+            <option value="Mingguan">Mingguan</option>
+            <option value="Bulanan">Bulanan</option>
+            <option value="Triwulanan">Triwulanan</option>
+            <option value="Semester">Semester</option>
+            <option value="Tahunan">Tahunan</option>
+        </select>
+        <button type="submit">Lihat Grafik</button>
+    </form>
+    <canvas id="ispuChart"></canvas>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('ispuChart').getContext('2d');
+            const data = {{ data|safe }};
+            const labels = data['index'];
+            const pm_sepuluh = data['pm_sepuluh'];
+            const pm_duakomalima = data['pm_duakomalima'];
+            const prediction = data['prediction'];
+
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'PM 10',
+                        data: pm_sepuluh,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        fill: false
+                    }, {
+                        label: 'PM 2.5',
+                        data: pm_duakomalima,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1,
+                        fill: false
+                    }
+                    , 
+                    // {
+                    //     label: 'Prediction',
+                    //     data: prediction,
+                    //     borderColor: 'rgba(54, 162, 235, 1)',
+                    //     borderWidth: 1,
+                    //     fill: false
+                    // }
+                            ]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        },
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

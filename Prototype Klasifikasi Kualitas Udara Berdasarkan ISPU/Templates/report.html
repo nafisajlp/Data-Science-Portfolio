@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan ISPU</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Laporan ISPU</h1>
+        <form method="POST" action="/report">
+            <label for="interval">Pilih Interval:</label>
+            <select name="interval" id="interval">
+                <option value="Harian">Harian</option>
+                <option value="Mingguan">Mingguan</option>
+                <option value="Bulanan">Bulanan</option>
+                <option value="Triwulanan">Triwulanan</option>
+                <option value="Semester">Semester</option>
+                <option value="Tahunan">Tahunan</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Lihat Laporan</button>
+        </form>
+        
+        {% if tables %}
+            {% for table in tables %}
+                {{ table|safe }}
+            {% endfor %}
+        {% else %}
+            <p>No data available</p>
+        {% endif %}
+        
+    </div>
+</body>
+</html>
