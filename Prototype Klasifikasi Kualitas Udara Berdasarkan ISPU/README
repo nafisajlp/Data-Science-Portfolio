@@ -1,0 +1,5 @@
+Berikut ini adalah script python untuk membangun model klasifikasi kualitas udara berdasarkan Indeks Standar Pencemaran Udara (ISPU) menggunakan dataset data ISPU di Provinsi DKI Jakarta 2023 yang didapat dari situs Satu Data Jakarta. 
+
+Dataset: https://satudata.jakarta.go.id/open-data/detail?kategori=dataset&page_url=data-indeks-standar-pencemar-udara-ispu-di-provinsi-dki-jakarta-2023&data_no=1
+
+ISPU : https://peraturan.bpk.go.id/Details/163466/permen-lhk-no-14-tahun-2020
